@@ -13,7 +13,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&todo)
 	if err != nil {
-		log.Println("Erro decode JSON: %v", err)
+		log.Printf("Erro decode JSON: %v", err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -23,13 +23,13 @@ func Create(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		resp = map[string]any{
-			"Error": true,
+			"Error":   true,
 			"Message": fmt.Sprintf("Erro ao inserir: %v", err),
 		}
 	} else {
 		resp = map[string]any{
-			"Error": false,
-			"Message": fmt.Sprintf("Todo inserido com sucesso | ID: %d", id)
+			"Error":   false,
+			"Message": fmt.Sprintf("Todo inserido com sucesso | ID: %d", id),
 		}
 	}
 

@@ -12,9 +12,9 @@ import (
 func InitConnection() (*sql.DB, error) {
 	conf := configs.GetDB()
 
-	strConnect := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disabled", conf.Host, conf.Port, conf.User, conf.Pass, conf.Database)
+	strConnect := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", conf.Host, conf.Port, conf.User, conf.Pass, conf.Database)
 
-	conn, err := sql.Open("postgress", strConnect) 
+	conn, err := sql.Open("postgres", strConnect) 
 	if err != nil {
 		// Não é bom usar panic em produção
 		panic(err)
